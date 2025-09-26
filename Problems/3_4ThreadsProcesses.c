@@ -20,18 +20,18 @@ int main() {
     pid_t pid = fork();
 
     if (pid == 0) {
-        // Child process
+        
         pthread_create(&thread, NULL, &worker, &data);
         pthread_join(thread, NULL);
     } else {
-        // Parent process
+        
         pthread_create(&thread, NULL, &worker, &data);
         pthread_join(thread, NULL);
 
         pthread_create(&thread, NULL, &worker, &data);
         pthread_join(thread, NULL);
 
-        wait(&status);  // wait for child to finish
+        wait(&status);  
     }
 
     return 0;
